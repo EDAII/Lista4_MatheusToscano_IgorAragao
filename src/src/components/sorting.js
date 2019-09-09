@@ -14,6 +14,22 @@ export function insertSort(arr){
     return arr;
 }
 
-export function bubbleSort(){
-
+export function bubbleSort(arr){
+    var swap;
+    let n = arr.length - 1;
+    let x = arr;
+    do{
+        swap = false;
+        for(let i=0; i < n; i++){
+            if(x[i] < x[i+1]){
+                let temp = x[i];
+                x[i] = x[i+1];
+                x[i+1] = temp;
+                swap = true;
+            }
+        }
+        n--;
+    } while(swap);
+    console.log('Arr:',x)
+    return x;
 }

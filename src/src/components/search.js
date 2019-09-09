@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { insertSort } from './sorting'
+import { insertSort, bubbleSort } from './sorting'
 import { resultados } from './rodadas'
 import '../App.css'
 
@@ -140,6 +140,11 @@ export default class search extends Component {
         this.forceUpdate()
     }
 
+    bubble(){
+        bubbleSort(resultados)
+        this.forceUpdate()
+    }
+
 
     render() {
         return (
@@ -162,13 +167,16 @@ export default class search extends Component {
                         <div className="cont_botoes">
                             <button className="botao" onClick={() => this.linear()}>Pesquisar</button>
                             <button className="botao" onClick={() => this.insertion(team)}>Escalar Melhores</button>
-                            <button className="botao" disabled>Multar</button>
+                            <button className="botao" onClick={() => this.bubble(team)}>Atualizar Tabela</button>
                         </div>
                         <p className="resultado_busca">{result}</p>
                         <div className="tabelas">
                             {resultados.map(tabela => {
                                 return (
-                                    <span style={{backgroundColor: tabela.color.bg, color: tabela.color.letra, padding: 2}}>{tabela.time}</span>
+                                    <div style={{ display: 'flex', backgroundColor: tabela.color.bg, justifyContent: 'space-between', alignItems: 'center'}}>
+                                        <span style={{color: tabela.color.letra, padding: 3}}>{tabela.time.toUpperCase()}</span>
+                                        <span style={{marginRight: 10, color: tabela.color.letra}}>{tabela.pontos}</span>
+                                    </div>
                                 )
                             })}
                         </div>
