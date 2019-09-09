@@ -82,6 +82,12 @@ ul{
   display: inline;
 }
 
+.tabelas{
+  border: solid black 2px;
+  display: flex;
+  flex-direction: column;
+}
+
 .searching{
   background-color: red;
 }

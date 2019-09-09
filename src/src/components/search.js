@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { insertSort } from './sorting'
+import { resultados } from './rodadas'
 import '../App.css'
 
 let b = [22, 31, 3, 21, 84, 29, 9]
@@ -107,7 +108,7 @@ let team = [
         forca: 92,
         selected: false
     },
-    
+
 ];
 
 let result = '';
@@ -122,10 +123,10 @@ export default class search extends Component {
             if (k === team[i].nome) {
                 result = 'Jogador ' + team[i].nome + ' está na posição ' + i + ' força:  ' + team[i].forca
                 team[i].selected = true
-                setTimeout( function(){
+                setTimeout(function () {
                     this.forceUpdate()
                     team[i].selected = false
-                }.bind(this), 800 )
+                }.bind(this), 800)
                 break;
             } else if (i === (team.length - 1) && k !== team[i].nome) {
                 result = 'Jogador não encontrado!'
@@ -134,7 +135,7 @@ export default class search extends Component {
         }
     }
 
-    insertion(){
+    insertion() {
         insertSort(team)
         this.forceUpdate()
     }
@@ -153,7 +154,7 @@ export default class search extends Component {
                         </div>
                         <div className="plantel">
                             {team.map(player => {
-                                return <li style={ !player.selected ? {} : {backgroundColor: '#a22'}}><span style={{marginRight: 20}}>{player.posicao}</span>{player.nome}<span style={{marginLeft: player.forca+100}}>{player.forca}</span></li>
+                                return <li style={!player.selected ? {} : { backgroundColor: '#a22' }}><span style={{ marginRight: 20 }}>{player.posicao}</span>{player.nome}<span style={{ marginLeft: player.forca + 100 }}>{player.forca}</span></li>
                             })}
                         </div>
                     </div>
@@ -164,6 +165,13 @@ export default class search extends Component {
                             <button className="botao" disabled>Multar</button>
                         </div>
                         <p className="resultado_busca">{result}</p>
+                        <div className="tabelas">
+                            {resultados.map(tabela => {
+                                return (
+                                    <span style={{backgroundColor: tabela.color.bg, color: tabela.color.letra, padding: 2}}>{tabela.time}</span>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>
