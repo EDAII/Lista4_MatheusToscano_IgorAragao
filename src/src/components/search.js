@@ -1,107 +1,110 @@
 import React, { Component } from 'react'
+import { insertSort } from './sorting'
 import '../App.css'
+
+let b = [22, 31, 3, 21, 84, 29, 9]
 
 let team = [
     {
         nome: 'Buffon',
         posicao: 'G',
-        camisa: 1,
-        selected: false
+        forca: 90,
+        selected: false,
     },
     {
         nome: 'Neuer',
         posicao: 'G',
-        camisa: 14,
+        forca: 93,
         selected: false
     },
     {
         nome: 'Alisson',
         posicao: 'G',
-        camisa: 16,
+        forca: 96,
         selected: false
     },
     {
         nome: 'Pique',
         posicao: 'D',
-        camisa: 2,
+        forca: 87,
         selected: false
     },
     {
         nome: 'Sergio Ramos',
         posicao: 'D',
-        camisa: 3,
+        forca: 88,
         selected: false
     },
     {
         nome: 'Marcelo',
         posicao: 'D',
-        camisa: 4,
+        forca: 90,
         selected: false
     },
     {
         nome: 'Chiellini',
         posicao: 'D',
-        camisa: 5,
+        forca: 91,
         selected: false
     },
     {
         nome: 'Kroos',
         posicao: 'M',
-        camisa: 6,
+        forca: 91,
         selected: false
     },
     {
         nome: 'Modric',
         posicao: 'M',
-        camisa: 14,
+        forca: 89,
         selected: false
     },
     {
         nome: 'Ozil',
         posicao: 'M',
-        camisa: 8,
+        forca: 82,
         selected: false
     },
     {
         nome: 'Cristiano Ronaldo',
         posicao: 'A',
-        camisa: 7,
+        forca: 99,
         selected: false
     },
     {
         nome: 'Lionel Messi',
         posicao: 'A',
-        camisa: 10,
+        forca: 99,
         selected: false
     },
     {
         nome: 'Neymar',
         posicao: 'A',
-        camisa: 11,
+        forca: 96,
         selected: false
     },
     {
         nome: 'Mbappe',
         posicao: 'A',
-        camisa: 20,
+        forca: 95,
         selected: false
     },
     {
         nome: 'Lewandovski',
         posicao: 'A',
-        camisa: 19,
+        forca: 91,
         selected: false
     },
     {
         nome: 'Firmino',
         posicao: 'A',
-        camisa: 18,
+        forca: 92,
         selected: false
     },
     {
         nome: 'Salah',
         posicao: 'A',
-        camisa: 35,
+        forca: 92,
         selected: false
     },
     
@@ -117,7 +120,7 @@ export default class search extends Component {
         let k = String(prompt('Digite o nome do jogador que deseja encontrar: '))
         for (let i = 0; i < team.length; i++) {
             if (k === team[i].nome) {
-                result = 'Jogador ' + team[i].nome + ' está na posição ' + i + ' com a camisa ' + team[i].camisa
+                result = 'Jogador ' + team[i].nome + ' está na posição ' + i + ' força:  ' + team[i].forca
                 team[i].selected = true
                 setTimeout( function(){
                     this.forceUpdate()
@@ -129,6 +132,11 @@ export default class search extends Component {
                 this.forceUpdate()
             }
         }
+    }
+
+    insertion(){
+        insertSort(team)
+        this.forceUpdate()
     }
 
 
@@ -145,14 +153,14 @@ export default class search extends Component {
                         </div>
                         <div className="plantel">
                             {team.map(player => {
-                                return <li style={ !player.selected ? {} : {backgroundColor: '#a22'}}><span style={{marginRight: 20}}>{player.posicao}</span>{player.nome}</li>
+                                return <li style={ !player.selected ? {} : {backgroundColor: '#a22'}}><span style={{marginRight: 20}}>{player.posicao}</span>{player.nome}<span style={{marginLeft: 500}}>{player.forca}</span></li>
                             })}
                         </div>
                     </div>
                     <div className="info_time_2">
                         <div className="cont_botoes">
                             <button className="botao" onClick={() => this.linear()}>Pesquisar</button>
-                            <button className="botao" disabled>Vender</button>
+                            <button className="botao" onClick={() => this.insertion(team)}>Escalar Melhores</button>
                             <button className="botao" disabled>Multar</button>
                         </div>
                         <p className="resultado_busca">{result}</p>
