@@ -30,7 +30,7 @@ let team = [
         selected: false
     },
     {
-        nome: 'Sergio Ramos',
+        nome: 'Ramos',
         posicao: 'D',
         forca: 88,
         selected: false
@@ -153,7 +153,7 @@ export default class search extends Component {
                         </div>
                         <div className="plantel">
                             {team.map(player => {
-                                return <li style={ !player.selected ? {} : {backgroundColor: '#a22'}}><span style={{marginRight: 20}}>{player.posicao}</span>{player.nome}<span style={{marginLeft: 500}}>{player.forca}</span></li>
+                                return <li style={ !player.selected ? {} : {backgroundColor: '#a22'}}><span style={{marginRight: 20}}>{player.posicao}</span>{player.nome}<span style={{marginLeft: player.forca+100}}>{player.forca}</span></li>
                             })}
                         </div>
                     </div>
