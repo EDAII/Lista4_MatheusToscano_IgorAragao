@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { insertSort, bubbleSort } from './sorting'
+import { insertSort, bubbleSort, selectionSort } from './sorting'
 import { resultados } from './rodadas'
 import '../App.css'
 
@@ -140,8 +140,8 @@ export default class search extends Component {
         this.forceUpdate()
     }
 
-    bubble(){
-        bubbleSort(resultados)
+    selection(){
+        selectionSort(resultados)
         this.forceUpdate()
     }
 
@@ -166,8 +166,8 @@ export default class search extends Component {
                     <div className="info_time_2">
                         <div className="cont_botoes">
                             <button className="botao" onClick={() => this.linear()}>Pesquisar</button>
-                            <button className="botao" onClick={() => this.insertion(team)}>Escalar Melhores</button>
-                            <button className="botao" onClick={() => this.bubble(team)}>Atualizar Tabela</button>
+                            <button className="botao" onClick={() => this.insertion()}>Escalar Melhores</button>
+                            <button className="botao" onClick={() => this.selection()}>Atualizar Tabela</button>
                         </div>
                         <p className="resultado_busca">{result}</p>
                         <div className="tabelas">
