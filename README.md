@@ -23,7 +23,7 @@ Ao digitar um nome válido e apertar 'OK', o sistema fará a busca, e marcará o
 3. Na pasta ```src/```, rode os comandos:
     ```bash
     npm install
-    npm serve
+    npm start
     ```
 
 4. Pronto! O projeto estará rodando em: ```http://localhost:3000/```
