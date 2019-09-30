@@ -27,7 +27,7 @@ ul{
 
 .cont_botoes{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   height: 80px;
 }
 
@@ -35,8 +35,8 @@ ul{
   background-color: #e6e6e6;
   padding: 30px 24px;
   box-shadow: 1px 2px #000;
-  width: 76px;
-  height: 76px;
+  width: 80px;
+  height: 80px;
   text-align: center;
   font-size: 10px;
   display: flex;
@@ -65,18 +65,18 @@ ul{
   display: flex;
   flex-direction: column;
   flex: 2;
-  border: solid 2px yellow
 }
 
 .info_time_2{
   display: flex;
   flex: 1;
   flex-direction: column;
-  border: solid 2px red;
 }
 
 .resultado_busca{
-  color: #ede500
+  color: #ede500;
+  font-weight: 700;
+  margin-bottom: 20px
 }
 
 .infos{
@@ -95,6 +95,7 @@ ul{
   border: solid black 2px;
   display: flex;
   flex-direction: column;
+  margin-top: 33px
 }
 
 .searching{
@@ -113,4 +114,16 @@ ul{
   width: 742px;
   height: 580px;
   justify-content: space-between;
+}
+
+.containerPartida{
+  display: flex;
+  flex-direction: column;
+  width: 1350px;
+}
+
+.jogos{
+  display: flex;
+  justify-content: space-between;
+  width: 360px
 }

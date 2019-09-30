@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/search';
 import Menu from './components/menu';
+import Partida from './components/partida'
 
 export default class App extends Component {
   constructor(props) {
@@ -21,7 +22,10 @@ export default class App extends Component {
       <div>
         {scene == 'Menu' ?
           <Menu sceneFunction={this.toggleScene.bind(this)} /> :
-          <Search sceneFunction={this.toggleScene.bind(this)}/>
+          scene == 'Plantel' ?
+            <Search sceneFunction={this.toggleScene.bind(this)} /> :
+            scene == 'Partida' ?
+              <Partida sceneFunction={this.toggleScene.bind(this)}/> : null
         }
       </div>
     );

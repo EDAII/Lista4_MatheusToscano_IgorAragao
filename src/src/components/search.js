@@ -140,7 +140,7 @@ export default class search extends Component {
         this.forceUpdate()
     }
 
-    selection(){
+    selection() {
         selectionSort(resultados)
         this.forceUpdate()
     }
@@ -169,17 +169,18 @@ export default class search extends Component {
                             <button className="botao" onClick={() => this.insertion()}>Escalar Melhores</button>
                             <button className="botao" onClick={() => this.selection()}>Atualizar Tabela</button>
                         </div>
-                        <p className="resultado_busca">{result}</p>
                         <div className="tabelas">
                             {resultados.map(tabela => {
                                 return (
-                                    <div style={{ display: 'flex', backgroundColor: tabela.color.bg, justifyContent: 'space-between', alignItems: 'center'}}>
-                                        <span style={{color: tabela.color.letra, padding: 3}}>{tabela.time.toUpperCase()}</span>
-                                        <span style={{marginRight: 10, color: tabela.color.letra}}>{tabela.pontos}</span>
+                                    <div style={{ display: 'flex', backgroundColor: tabela.color.bg, justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <span style={{ color: tabela.color.letra, padding: 3 }}>{tabela.time.toUpperCase()}</span>
+                                        <span style={{ marginRight: 10, color: tabela.color.letra }}>{tabela.pontos}</span>
                                     </div>
                                 )
                             })}
                         </div>
+                        <p className="resultado_busca">{result}</p>
+                        <button className="botao" onClick={() => this.props.sceneFunction('Partida')}>Jogar</button>
                     </div>
                 </div>
             </div>
