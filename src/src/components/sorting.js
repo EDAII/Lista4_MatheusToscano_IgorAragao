@@ -1,4 +1,4 @@
-export function insertSort(arr) {
+export function insertionSort(arr) {
     console.log('INITIAL ARR', arr)
     let len = arr.length;
     for (let i = 1; i < len; i++) {
@@ -45,4 +45,46 @@ export function selectionSort(arr) {
         }
     }
     return arr
+}
+
+// n log n
+export function shellSort(arr) {
+    let n = arr.length;
+    let h = n / 2;
+    var c, j;
+    while (h > 0) {
+        for (var i = h; i < n; i++) {
+            c = arr[i];
+            j = i;
+            while (j >= h && arr[j - h] > c) {
+                arr[j] = arr[j - h];
+                j = j - h;
+            }
+            arr[j] = c;
+        }
+        h = h / 2;
+    }
+}
+
+export function quickSort(origArray) {
+    if (origArray.length <= 1) {
+        return origArray;
+    } else {
+
+        var left = [];
+        var right = [];
+        var newArray = [];
+        var pivot = origArray.pop();
+        var length = origArray.length;
+
+        for (var i = 0; i < length; i++) {
+            if (origArray[i] <= pivot) {
+                left.push(origArray[i]);
+            } else {
+                right.push(origArray[i]);
+            }
+        }
+
+        return newArray.concat(quickSort(left), pivot, quickSort(right));
+    }
 }

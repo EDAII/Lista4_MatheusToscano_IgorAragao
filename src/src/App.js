@@ -20,12 +20,13 @@ export default class App extends Component {
     const { scene } = this.state;
     return (
       <div>
-        {scene == 'Menu' ?
+        {scene === 'Menu' ?
           <Menu sceneFunction={this.toggleScene.bind(this)} /> :
-          scene == 'Plantel' ?
-            <Search sceneFunction={this.toggleScene.bind(this)} /> :
-            scene == 'Partida' ?
-              <Partida sceneFunction={this.toggleScene.bind(this)}/> : null
+          scene === 'Plantel' ?
+          <Search sceneFunction={this.toggleScene.bind(this)} /> :
+          scene === 'Partida' ?
+          <Partida sceneFunction={this.toggleScene.bind(this)} /> : 
+          null
         }
       </div>
     );

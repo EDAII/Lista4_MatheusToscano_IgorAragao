@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { insertSort, bubbleSort, selectionSort } from './sorting'
+import { insertionSort, selectionSort } from './sorting'
 import { resultados } from './rodadas'
 import '../App.css'
 
-let b = [22, 31, 3, 21, 84, 29, 9]
+// let b = [22, 31, 3, 21, 84, 29, 9]
 
 let team = [
     {
@@ -116,8 +116,6 @@ let result = '';
 export default class search extends Component {
 
     linear() {
-        let n = team.length
-        let a = []
         let k = String(prompt('Digite o nome do jogador que deseja encontrar: '))
         for (let i = 0; i < team.length; i++) {
             if (k === team[i].nome) {
@@ -136,7 +134,7 @@ export default class search extends Component {
     }
 
     insertion() {
-        insertSort(team)
+        insertionSort(team)
         this.forceUpdate()
     }
 
