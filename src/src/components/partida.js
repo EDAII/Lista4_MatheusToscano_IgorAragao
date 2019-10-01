@@ -18,32 +18,43 @@ export default class partida extends Component {
         return Math.floor(Math.random() * number);
     }
 
-    stopwatch(){
+    stopwatch() {
         setInterval(() => {
-            this.setState({time: this.state.time + 1})
+            this.setState({ time: this.state.time + 1 })
         }, 1000)
     }
 
     match() {
         setInterval(() => {
             times[this.randUpTo(8)].gols = times[this.randUpTo(8)].gols + this.randUpTo(2)
-                this.forceUpdate()
-            }, 1000)
+            this.forceUpdate()
+        }, 1000)
     }
 
     compare() {
+        var num = 2;
+
         var t0 = performance.now();
-        shellSort(vetores[0]);
+        shellSort(vetores[num]);
         var t1 = performance.now();
         var tShell = t1 - t0;
 
         var t2 = performance.now();
-        quickSort(vetores[0]);
+        quickSort(vetores[num]);
         var t3 = performance.now();
         var tQuick = t3 - t2;
 
-        if (tShell > tQuick) return 'QuickSort é mais rápido no vetor [3,0,2,5,-1,4,1]';
-        else  return 'ShellSort é mais rápido no vetor [3,0,2,5,-1,4,1]';
+        var result;
+        if (tShell > tQuick) result = 'QuickSort';
+        else result = 'QuickSort';
+
+        return (
+            <div>
+                <h2>{result} é mais rápido no vetor [{vetores[num].toString()}].</h2>
+                <h3>QuickSort: {tQuick}</h3>
+                <h3>ShellSort: {tShell}</h3>
+            </div>
+        )
     }
 
     render() {
