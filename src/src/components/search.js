@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { insertionSort, selectionSort } from './sorting'
-import { resultados } from './rodadas'
+import { times } from './times'
 import '../App.css'
 
 // let b = [22, 31, 3, 21, 84, 29, 9]
@@ -139,7 +139,7 @@ export default class search extends Component {
     }
 
     selection() {
-        selectionSort(resultados)
+        selectionSort(times)
         this.forceUpdate()
     }
 
@@ -168,11 +168,11 @@ export default class search extends Component {
                             <button className="botao" onClick={() => this.selection()}>Atualizar Tabela</button>
                         </div>
                         <div className="tabelas">
-                            {resultados.map(tabela => {
+                            {times.map(tabela => {
                                 return (
                                     <div style={{ display: 'flex', backgroundColor: tabela.color.bg, justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ color: tabela.color.letra, padding: 3 }}>{tabela.time.toUpperCase()}</span>
-                                        <span style={{ marginRight: 10, color: tabela.color.letra }}>{tabela.pontos}</span>
+                                        <span style={{ color: tabela.color.letra, padding: 3 }}>{tabela.nome.toUpperCase()}</span>
+                                        <span style={{ marginRight: 10, color: tabela.color.letra }}>{tabela.pts}</span>
                                     </div>
                                 )
                             })}

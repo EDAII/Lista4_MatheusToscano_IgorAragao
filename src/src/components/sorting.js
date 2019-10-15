@@ -36,7 +36,7 @@ export function selectionSort(arr) {
     for (var i = 0; i < arr.length; i++) {
         let min = i; //  index do menor elemento
         for (var j = i + 1; j < arr.length; j++) {
-            if (arr[min].pontos < arr[j].pontos) {
+            if (arr[min].pts < arr[j].pts) {
                 min = j; // atualiza o index do menor
             }
         }
@@ -44,6 +44,7 @@ export function selectionSort(arr) {
             [arr[i], arr[min]] = [arr[min], arr[i]];
         }
     }
+    console.log(arr)
     return arr
 }
 

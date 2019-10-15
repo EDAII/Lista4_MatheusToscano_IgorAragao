@@ -3,6 +3,13 @@ import '../App.css'
 import { times } from './times'
 import { vetores } from './vetores'
 import { shellSort, quickSort } from './sorting'
+import Clock from './clock'
+
+// Times que jogam em casa e fora
+var home = [];
+var away = [];
+
+var partidas = [];
 
 
 export default class partida extends Component {
@@ -10,25 +17,20 @@ export default class partida extends Component {
         super(props)
         this.state = {
             inProgress: false,
-            time: 0
+            gols: {
+                pro: 0,
+                contra: 0
+            }
         }
     }
 
-    randUpTo(number) {
-        return Math.floor(Math.random() * number);
-    }
-
-    stopwatch() {
-        setInterval(() => {
-            this.setState({ time: this.state.time + 1 })
-        }, 1000)
+    componentWillMount() {
+        this.homeAway()
+        this.match()
     }
 
     match() {
-        setInterval(() => {
-            times[this.randUpTo(8)].gols = times[this.randUpTo(8)].gols + this.randUpTo(2)
-            this.forceUpdate()
-        }, 1000)
+        times.forEach(time => { time.gols = Math.floor(Math.random() * (4 - 0 + 1)) + 0 })
     }
 
     compare() {
@@ -57,41 +59,52 @@ export default class partida extends Component {
         )
     }
 
+    homeAway() {
+        home = times.slice(0, times.length / 2)
+        away = times.slice(times.length / 2, times.length)
+        console.log("Home: ", home, "Away:", away)
+        for(let i = 0; i <= times.length; i++){
+            partidas.push(home[i])
+            partidas.push(away[i])
+        }
+        console.log(partidas)
+    }
+
     render() {
         return (
             <div className="containerPartida">
-                {/* {this.match()}
-                {this.stopwatch()}
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <p>{this.state.time}</p>
+                    <Clock seconds={100} radius={70} stroke={28} resultados={times} />
                 </div>
                 <div className="jogos">
-                    <div className="casa">
-                        {times.map(time => {
-                            return (
-                                <div style={{ display: 'flex' }}>
-                                    <div style={{ display: 'flex', backgroundColor: time.color.bg, justifyContent: 'space-between', alignItems: 'center', width: 160 }}>
-                                        <span style={{ color: time.color.letra, padding: 3 }}>{time.nome.toUpperCase()}&nbsp;&nbsp;</span>
+                    <div className="containerDivisao">
+                        <div className="casa">
+                            {home.map(time => {
+                                return (
+                                    <div style={{ display: 'flex' }}>
+                                        <div style={{ display: 'flex', backgroundColor: time.color.bg, justifyContent: 'space-between', alignItems: 'center', width: 160 }}>
+                                            <span style={{ color: time.color.letra, padding: 3, fontWeight: 600 }}>{time.nome.toUpperCase()}&nbsp;&nbsp;</span>
+                                        </div>
+                                        <span style={{ color: '#ede500', fontWeight: 'bold', margin: 5 }}>{time.gols}</span>
                                     </div>
-                                    <span style={{ color: '#ede500', fontWeight: 'bold', margin: 5 }}>{time.gols}</span>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <div className="visitante">
-                        {times.map(time => {
-                            return (
-                                <div style={{ display: 'flex' }}>
-                                    <span style={{ color: '#ede500', fontWeight: 'bold', margin: 5 }}>{time.gols}</span>
-                                    <div style={{ display: 'flex', backgroundColor: time.color.bg, justifyContent: 'space-between', alignItems: 'center', width: 160 }}>
-                                        <span style={{ color: time.color.letra, padding: 3 }}>{time.nome.toUpperCase()}&nbsp;&nbsp;</span>
+                                )
+                            })}
+                        </div>
+                        <div className="visitante">
+                            {away.map(time => {
+                                return (
+                                    <div style={{ display: 'flex' }}>
+                                        <span style={{ color: '#ede500', fontWeight: 'bold', margin: 5 }}>{time.gols}</span>
+                                        <div style={{ display: 'flex', backgroundColor: time.color.bg, justifyContent: 'space-between', alignItems: 'center', width: 160 }}>
+                                            <span style={{ color: time.color.letra, padding: 3, fontWeight: 600 }}>{time.nome.toUpperCase()}&nbsp;&nbsp;</span>
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
                     </div>
-                </div> */}
-                <h2>{this.compare()}</h2>
+                </div>
+                {/* <h2>{this.compare()}</h2> */}
             </div>
         )
     }

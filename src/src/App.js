@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Search from './components/search';
 import Menu from './components/menu';
-import Partida from './components/partida'
+import Partida from './components/partida';
+import Distance from './components/distance';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,15 +20,15 @@ export default class App extends Component {
   render() {
     const { scene } = this.state;
     return (
-      <div>
-        {scene === 'Menu' ?
+      <div className="contAll">
+        {/* {scene === 'Menu' ?
           <Menu sceneFunction={this.toggleScene.bind(this)} /> :
           scene === 'Plantel' ?
           <Search sceneFunction={this.toggleScene.bind(this)} /> :
           scene === 'Partida' ?
           <Partida sceneFunction={this.toggleScene.bind(this)} /> : 
-          null
-        }
+          null */}
+          <Distance/>
       </div>
     );
   }
