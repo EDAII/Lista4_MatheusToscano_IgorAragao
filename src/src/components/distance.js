@@ -19,6 +19,10 @@ var solarSystem = [
         distance: 600,
     },
     {
+        name: 'pluto',
+        distance: 1000,
+    },
+    {
         name: 'jupiter',
         distance: 140,
     },
@@ -33,10 +37,6 @@ var solarSystem = [
     {
         name: 'venus',
         distance: 64,
-    },
-    {
-        name: 'pluto',
-        distance: 1000,
     },
 ]
 
@@ -94,20 +94,21 @@ export default class distance extends Component {
     handleHeap() {
         this.heapSort(solarSystem)
         this.setState({ valid: false })
-        this.forceUpdate()
     }
 
     render() {
         console.log("Solar:", solarSystem)
         return (
             <div>
-                <button style={{ width: 100, height: 30, borderRadius: 4, border: 'none', marginTop: 20 }} onClick={() => this.handleHeap()}>Heap</button>
                 <div class='solar-syst'>
+                    <button class='comet' style={{ width: 40, height: 40, borderRadius: '50%', border: 'none', marginTop: 20 }} onClick={() => this.handleHeap()}>Heap</button>
                     <div class='sun'></div>
                     <div class='asteroids-belt'></div>
                     {solarSystem.map(planet => {
                         return (
-                            <div class={planet.name} style={this.state.valid ? { marginTop: planet.distance/30, height: planet.distance, width: planet.distance } : null}></div>
+                            <div class={planet.name} style={this.state.valid ? { marginTop: planet.distance / 100, height: planet.distance, width: planet.distance } : null}>
+                                <h2>{planet.distance} km</h2>
+                            </div>
                         )
                     })}
                 </div>

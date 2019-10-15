@@ -417,6 +417,22 @@ body {
   margin-left: -1.5px;
 }
 
+.comet {
+  height: 630px;
+  width: 630px;
+  margin-top: -405px;
+  margin-left: -405px;
+  -webkit-animation: orb 1.7838624549s linear infinite;
+          animation: orb 1.7838624549s linear infinite;
+}
+.comet:before {
+  height: 10px;
+  width: 10px;
+  background: #175e9e;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
 @-webkit-keyframes orb {
   from {
     -webkit-transform: rotate(0deg);
